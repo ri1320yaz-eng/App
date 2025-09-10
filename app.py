@@ -44,24 +44,24 @@ STOCK_DATA = {
 
 @st.cache_data(ttl=300)  # Cache for 5 minutes
 def fetch_stock_return(url, stock_name):
-try:
-    headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-    response = requests.get(url, headers=headers, timeout=10)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-
-```
-    # Use regex to find the first occurrence of a percentage value
-    match = re.search(r"[+-]?[0-9]+\.[0-9]+(?=%)", soup.text)
-    if match:
-        return float(match.group())
-    else:
+    try:
+        headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+    
+    ```
+        # Use regex to find the first occurrence of a percentage value
+        match = re.search(r"[+-]?[0-9]+\.[0-9]+(?=%)", soup.text)
+        if match:
+            return float(match.group())
+        else:
+            return 0.0
+    except Exception as e:
+        st.error(f"Error fetching data for {stock_name}: {str(e)}")
         return 0.0
-except Exception as e:
-    st.error(f"Error fetching data for {stock_name}: {str(e)}")
-    return 0.0
 ```
 
 def calculate_portfolio_return():
