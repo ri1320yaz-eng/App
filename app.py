@@ -45,12 +45,12 @@ STOCK_DATA = {
 @st.cache_data(ttl=300)  # Cache for 5 minutes
 def fetch_stock_return(url, stock_name):
 try:
-headers = {
-'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-}
-response = requests.get(url, headers=headers, timeout=10)
-response.raise_for_status()
-soup = BeautifulSoup(response.text, "html.parser")
+    headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers, timeout=10)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
 
 ```
     # Use regex to find the first occurrence of a percentage value
@@ -65,38 +65,36 @@ except Exception as e:
 ```
 
 def calculate_portfolio_return():
-"""Calculate weighted portfolio return"""
-portfolio_data = []
-total_allocation = sum(data["allocation"] for data in STOCK_DATA.values())
-
-```
-# Progress bar
-progress_bar = st.progress(0)
-status_text = st.empty()
-
-total_weighted_return = 0
-
-for i, (stock_name, data) in enumerate(STOCK_DATA.items()):
-    status_text.text(f'Fetching data for {stock_name}...')
+    portfolio_data = []
+    total_allocation = sum(data["allocation"] for data in STOCK_DATA.values())
     
-    stock_return = fetch_stock_return(data["url"], stock_name)
-    normalized_allocation = data["allocation"] / total_allocation
-    weighted_return = stock_return * normalized_allocation
-    total_weighted_return += weighted_return
+    #Progress bar
+    progress_bar = st.progress(0)
+    status_text = st.empty()
     
-    portfolio_data.append({
-        "Stock": stock_name,
-        "Return (%)": f"{stock_return:+.2f}%",
-        "Allocation (%)": f"{data['allocation']:.2f}%",
-        "Weighted Return (%)": f"{weighted_return:+.4f}%"
-    })
+    total_weighted_return = 0
     
-    # Update progress
-    progress_bar.progress((i + 1) / len(STOCK_DATA))
-    time.sleep(0.1)  # Small delay to avoid overwhelming the server
-
-progress_bar.empty()
-status_text.empty()
+    for i, (stock_name, data) in enumerate(STOCK_DATA.items()):
+        status_text.text(f'Fetching data for {stock_name}...')
+        
+        stock_return = fetch_stock_return(data["url"], stock_name)
+        normalized_allocation = data["allocation"] / total_allocation
+        weighted_return = stock_return * normalized_allocation
+        total_weighted_return += weighted_return
+        
+        portfolio_data.append({
+            "Stock": stock_name,
+            "Return (%)": f"{stock_return:+.2f}%",
+            "Allocation (%)": f"{data['allocation']:.2f}%",
+            "Weighted Return (%)": f"{weighted_return:+.4f}%"
+        })
+        
+        # Update progress
+        progress_bar.progress((i + 1) / len(STOCK_DATA))
+        time.sleep(0.1)  # Small delay to avoid overwhelming the server
+    
+    progress_bar.empty()
+    status_text.empty()
 
 return portfolio_data, total_weighted_return
 ```
@@ -104,10 +102,10 @@ return portfolio_data, total_weighted_return
 # Main app
 
 def main():
-# Add refresh button
-if st.button("🔄 Refresh Data", type="primary"):
-st.cache_data.clear()
-st.rerun()
+    # Add refresh button
+    if st.button("🔄 Refresh Data", type="primary"):
+        st.cache_data.clear()
+        st.rerun()
 
 ```
 st.markdown("---")
@@ -184,4 +182,4 @@ st.markdown("*Data sourced from Screener.in • Updates every 5 minutes*")
 ```
 
 if **name** == "**main**":
-main()
+    main()
