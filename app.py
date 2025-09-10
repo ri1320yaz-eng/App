@@ -95,7 +95,7 @@ def calculate_portfolio_return():
     status_text.empty()
 
 return portfolio_data, total_weighted_return
-```
+
 
 # Main app
 
@@ -105,7 +105,7 @@ def main():
         st.cache_data.clear()
         st.rerun()
 
-```
+
 st.markdown("---")
 
 # Show last updated time
@@ -177,7 +177,7 @@ with col2:
 # Footer
 st.markdown("---")
 st.markdown("*Data sourced from Screener.in • Updates every 5 minutes*")
-```
+
 
 if **name** == "**main**":
     main()
