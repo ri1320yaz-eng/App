@@ -184,5 +184,5 @@ st.markdown("---")
 st.markdown("*Data sourced from Screener.in • Updates every 5 minutes*")
 ```
 
-if **name** == “**main**”:
+if **name** == "**main**":
 main()
