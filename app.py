@@ -6,52 +6,52 @@ import time
 import pandas as pd
 from datetime import datetime
 
-# Set page config
+# Set page config"
 
 st.set_page_config(
-page_title=“Portfolio Tracker”,
-page_icon=“📈”,
-layout=“centered”
+page_title="Portfolio Tracker",
+page_icon="📈",
+layout="centered"
 )
 
 # App title
 
-st.title(“📈 My Portfolio Tracker”)
-st.markdown(“Real-time returns for your stock portfolio”)
+st.title("📈 My Portfolio Tracker")
+st.markdown("Real-time returns for your stock portfolio")
 
 # Stock data
 
 STOCK_DATA = {
-“DIXON”: {“url”: “https://www.screener.in/company/DIXON/consolidated/”, “allocation”: 10.08},
-“COFORGE”: {“url”: “https://www.screener.in/company/COFORGE/consolidated/”, “allocation”: 9.79},
-“TRENT”: {“url”: “https://www.screener.in/company/TRENT/consolidated/”, “allocation”: 9.14},
-“ETERNAL”: {“url”: “https://www.screener.in/company/ETERNAL/consolidated/”, “allocation”: 9.03},
-“KALYANKJIL”: {“url”: “https://www.screener.in/company/KALYANKJIL/consolidated/”, “allocation”: 8.70},
-“PAYTM”: {“url”: “https://www.screener.in/company/PAYTM/consolidated/”, “allocation”: 8.68},
-“PERSISTENT”: {“url”: “https://www.screener.in/company/PERSISTENT/consolidated/”, “allocation”: 8.39},
-“POLYCAB”: {“url”: “https://www.screener.in/company/POLYCAB/consolidated/”, “allocation”: 6.22},
-“KEI”: {“url”: “https://www.screener.in/company/KEI/”, “allocation”: 4.11},
-“KAYNES”: {“url”: “https://www.screener.in/company/KAYNES/consolidated/”, “allocation”: 3.70},
-“BHARTIHEXA”: {“url”: “https://www.screener.in/company/BHARTIHEXA/”, “allocation”: 3.34},
-“MAXHEALTH”: {“url”: “https://www.screener.in/company/MAXHEALTH/consolidated/”, “allocation”: 3.21},
-“ABCAPITAL”: {“url”: “https://www.screener.in/company/ABCAPITAL/consolidated/”, “allocation”: 3.20},
-“TIINDIA”: {“url”: “https://www.screener.in/company/TIINDIA/consolidated/”, “allocation”: 2.98},
-“PRESTIGE”: {“url”: “https://www.screener.in/company/PRESTIGE/consolidated/”, “allocation”: 2.58},
-“SUPREMEIND”: {“url”: “https://www.screener.in/company/SUPREMEIND/consolidated/”, “allocation”: 2.38},
-“KPITTECH”: {“url”: “https://www.screener.in/company/KPITTECH/consolidated/”, “allocation”: 1.03},
-“POWERINDIA”: {“url”: “https://www.screener.in/company/POWERINDIA”, “allocation”: 0.86}
+"DIXON": {"url": "https://www.screener.in/company/DIXON/consolidated/", "allocation": 10.08},
+"COFORGE": {"url": "https://www.screener.in/company/COFORGE/consolidated/", "allocation": 9.79},
+"TRENT": {"url": "https://www.screener.in/company/TRENT/consolidated/", "allocation": 9.14},
+"ETERNAL": {"url": "https://www.screener.in/company/ETERNAL/consolidated/", "allocation": 9.03},
+"KALYANKJIL": {"url": "https://www.screener.in/company/KALYANKJIL/consolidated/", "allocation": 8.70},
+"PAYTM": {"url": "https://www.screener.in/company/PAYTM/consolidated/", "allocation": 8.68},
+"PERSISTENT": {"url": "https://www.screener.in/company/PERSISTENT/consolidated/", "allocation": 8.39},
+"POLYCAB": {"url": "https://www.screener.in/company/POLYCAB/consolidated/", "allocation": 6.22},
+"KEI": {"url": "https://www.screener.in/company/KEI/", "allocation": 4.11},
+"KAYNES": {"url": "https://www.screener.in/company/KAYNES/consolidated/", "allocation": 3.70},
+"BHARTIHEXA": {"url": "https://www.screener.in/company/BHARTIHEXA/", "allocation": 3.34},
+"MAXHEALTH": {"url": "https://www.screener.in/company/MAXHEALTH/consolidated/", "allocation": 3.21},
+"ABCAPITAL": {"url": "https://www.screener.in/company/ABCAPITAL/consolidated/", "allocation": 3.20},
+"TIINDIA": {"url": "https://www.screener.in/company/TIINDIA/consolidated/", "allocation": 2.98},
+"PRESTIGE": {"url": "https://www.screener.in/company/PRESTIGE/consolidated/", "allocation": 2.58},
+"SUPREMEIND": {"url": "https://www.screener.in/company/SUPREMEIND/consolidated/", "allocation": 2.38},
+"KPITTECH": {"url": "https://www.screener.in/company/KPITTECH/consolidated/", "allocation": 1.03},
+"POWERINDIA": {"url": "https://www.screener.in/company/POWERINDIA", "allocation": 0.86}
 }
 
 @st.cache_data(ttl=300)  # Cache for 5 minutes
 def fetch_stock_return(url, stock_name):
-“”“Fetch stock return from screener.in”””
+"""Fetch stock return from screener.in"""
 try:
 headers = {
-‘User-Agent’: ‘Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36’
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
 response = requests.get(url, headers=headers, timeout=10)
 response.raise_for_status()
-soup = BeautifulSoup(response.text, “html.parser”)
+soup = BeautifulSoup(response.text, "html.parser")
 
 ```
     # Use regex to find the first occurrence of a percentage value
@@ -106,7 +106,7 @@ return portfolio_data, total_weighted_return
 
 def main():
 # Add refresh button
-if st.button(“🔄 Refresh Data”, type=“primary”):
+if st.button("🔄 Refresh Data", type="primary"):
 st.cache_data.clear()
 st.rerun()
 
