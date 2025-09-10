@@ -66,7 +66,7 @@ except Exception as e:
 ```
 
 def calculate_portfolio_return():
-“”“Calculate weighted portfolio return”””
+"""Calculate weighted portfolio return"""
 portfolio_data = []
 total_allocation = sum(data[“allocation”] for data in STOCK_DATA.values())
 
