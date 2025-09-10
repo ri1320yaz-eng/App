@@ -94,7 +94,7 @@ def calculate_portfolio_return():
     progress_bar.empty()
     status_text.empty()
 
-return portfolio_data, total_weighted_return
+    return portfolio_data, total_weighted_return
 
 
 # Main app
