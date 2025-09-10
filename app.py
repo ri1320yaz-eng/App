@@ -52,7 +52,6 @@ def fetch_stock_return(url, stock_name):
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
     
-    ```
         # Use regex to find the first occurrence of a percentage value
         match = re.search(r"[+-]?[0-9]+\.[0-9]+(?=%)", soup.text)
         if match:
@@ -62,7 +61,6 @@ def fetch_stock_return(url, stock_name):
     except Exception as e:
         st.error(f"Error fetching data for {stock_name}: {str(e)}")
         return 0.0
-```
 
 def calculate_portfolio_return():
     portfolio_data = []
